@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class MyWidget extends StatelessWidget{
 
-  final color? bgcolor;
-  final image? image;
+  final Color? bgcolor;
+  final Image? image;
   VoidCallback? onpress;
-  widget? label;
+  Widget? label;
 
   MyWidget({this.bgcolor,required this.label, this.image,required this.onpress});
 
