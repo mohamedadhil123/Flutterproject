@@ -1,43 +1,50 @@
 import 'package:flutter/material.dart';
-void main(){
-  runApp(MaterialApp(debugShowCheckedModeBanner: false,home: Drawyer(),));
-}
-class Drawyer extends StatelessWidget {
-  const Drawyer({super.key});
-
+void main(){runApp(MaterialApp(home: DrawerEx(),));}
+class DrawerEx extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Drawyer"),
-        ),
-        drawer: Drawer(
-            child: ListView(
-              children: [
-                UserAccountsDrawerHeader(accountName: const Text("Adhil"), accountEmail: const Text("adhilhidayath@gmail.com"),
-                  currentAccountPicture: Image.asset("assets/icons/1.png"),
-                  otherAccountsPictures: [Image.asset("assets/icons/2.png")],
+      appBar: AppBar(
+        title: const Text("My Drawer"),
+      ),
+      //Theme(
+        //data: Theme.of(context).copyWith(canvasColor: Colors.green),
+       // child:
+      //endDrawer:
+      drawer: Drawer(
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                decoration: const BoxDecoration(
+                    //color: Colors.purple
+                 image: DecorationImage(
+                     fit: BoxFit.cover,
+                     image: AssetImage("assets/images/greennew.jpg"))),
+                accountName: const Text("My Name",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                ListTile(
-                  leading: Icon(Icons.home),
-                  title: Text("Home"),
-                ),
-                ListTile(
-                  leading: Icon(Icons.settings),
-                  title: Text("Settings"),
-                ),
-                ListTile(
-                  leading: Icon(Icons.menu),
-                  title: Text("Menu"),
-                ),
-                ListTile(
-                  leading: Icon(Icons.privacy_tip),
-                  title: Text("Privacy"),
-                ),
+                accountEmail: const Text("myname@gmail.com"),
+                currentAccountPicture: Image.asset("assets/images/logingirl.png"),
+                otherAccountsPictures: [Image.asset("assets/icons/apple.png")],
+              ),
+               ListTile(
+                onTap: (){},
+                leading: Icon(Icons.home),
+                title: Text("Home"),
+              ),
+              const ListTile(
+                leading: Icon(Icons.settings),
+                title: Text("Settings"),
+              ),
+              const ListTile(
+                leading: Icon(Icons.menu),
+                title: Text("Home"),
+              ),
 
-              ],
-            ),
-            ),
-       );
-    }
+            ],
+          ),
+        ),
+     // ),
+    );
+  }
 }

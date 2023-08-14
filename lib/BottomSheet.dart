@@ -1,48 +1,64 @@
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// to perform event of gestures we use Gesture detector/ inkwell
-void main() {
-  runApp(MaterialApp(home: BottomSheett(),));
+
+void main()
+{
+  runApp(MaterialApp(debugShowCheckedModeBanner: false,home: BottomSheet1(),));
 }
 
-class BottomSheett extends StatelessWidget {
+class BottomSheet1 extends StatelessWidget{
+  const BottomSheet1({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       body: Center(
         child:
-            GestureDetector(
-                onLongPress: (){
-                  showSheet(context);
-                },
-                child: Image.asset("assets/images/greennew.jpg")),
+        GestureDetector(
+            onLongPress: (){
+              showSheet(context);
+            },
+            child: Image.asset("assets/images/Akaza.jpg",
+            height: double.infinity,)),
       ),
     );
   }
-  void showSheet(BuildContext context) {
+  void showSheet(BuildContext context){
     showModalBottomSheet(context: context, builder: (context){
       return Container(
-        child:  const Column(
+        child: const Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ListTile(
-           //   leading: Icon(Icons.share),
-              leading:FaIcon(
-                  FontAwesomeIcons.facebook,
-                  color: Colors.blue),
-              title:Text('Share'),
 
+          ListTile(
+            leading: FaIcon(FontAwesomeIcons.download,color: Colors.black,),
+            title: Text("download"),
+          ),
+            ListTile(
+              leading: FaIcon(FontAwesomeIcons.whatsapp,color: Colors.greenAccent,),
+              title: Text("Whatsapp"),
             ),
             ListTile(
-              //leading: Icon(Icons.copy),
-              leading: FaIcon(
-                FontAwesomeIcons.whatsapp,
-                color: Colors.green,),
-              title:Text('Copy'),
+              leading: FaIcon(FontAwesomeIcons.instagram,color: Colors.pinkAccent,),
+              title: Text("Instagram"),
+            ),
+            ListTile(
+              leading: FaIcon(FontAwesomeIcons.snapchat,color: Colors.yellowAccent,),
+              title: Text("snapchat"),
+            ),
+            ListTile(
+              leading: Icon(Icons.copy,color: Colors.black,),
+              title: Text("copy"),
+            ),
+            ListTile(
+              leading: FaIcon(FontAwesomeIcons.twitter,color: Colors.blue,),
+              title: Text("twitter"),
             )
           ],
         ),
       );
-    });
+    }
+    );
   }
 }

@@ -1,60 +1,56 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_project_may/ListView/ListView%20separator.dart';
-import 'package:flutter_project_may/home.dart';
-import 'package:flutter_project_may/login.dart';
+import 'package:flutter_project_may2023/Assignment/Login.dart';
+import 'package:flutter_project_may2023/Assignment/SignUp.dart';
+import 'package:flutter_project_may2023/Assignment/contacts.dart';
+import 'package:flutter_project_may2023/Assignment/whatsapp%20ui.dart';
+import 'package:flutter_project_may2023/LoginPage.dart';
+import 'package:flutter_project_may2023/splash%20screen.dart';
 
-import 'ListView/ListView with  List.generate.dart';
-
-void main() {
+void main(){
   runApp(MaterialApp(
-    home: BottomNavBar(),
-  ));
+    debugShowCheckedModeBanner: false,
+
+    home: BottomNavBarState(),));
+}
+class BottomNavBarState extends StatefulWidget {
+
+  @override
+  State<BottomNavBarState> createState() => _BottomNavBarStateState();
 }
 
-class BottomNavBar extends StatefulWidget {
-  @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
-}
-class _BottomNavBarState extends State<BottomNavBar> {
-  int index = 0;
-  var screens = [
-    ListView3(),
-    ListView2(),
-    LoginPage(),
-    HomePage()
+class _BottomNavBarStateState extends State<BottomNavBarState> {
+  int index=0;
+
+  var Screens=[
+   Contacts(),
+   Whatsapp(),
+    Splash(),
+    LoginPage()
+
+
   ];
+
+  // const BottomNavBar({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("BottomBar"),),
       bottomNavigationBar: BottomNavigationBar(
-          onTap: (tapindex) {
-            setState(() {
-              index = tapindex;
-            });
-          },
-          backgroundColor: Colors.green,
-          currentIndex: index,
-          selectedItemColor: Colors.yellow,
-          // type: BottomNavigationBarType.fixed,
-          type: BottomNavigationBarType.shifting,
-          items: const [
-            BottomNavigationBarItem(
-                backgroundColor: Colors.red,  // applicable for bottom navigation bar type shifting
-                icon: Icon(Icons.contacts_sharp),
-                label: "Contact"),
-            BottomNavigationBarItem(
-                backgroundColor: Colors.green,
-                icon: Icon(Icons.search),
-                label: "Search"),
-            BottomNavigationBarItem(
-                backgroundColor: Colors.black,
-                icon: Icon(Icons.add_box_rounded),
-                label: "View"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: "Home")
-          ]),
-      body: screens[index],
+        onTap: (tapindex){
+          index=tapindex;
+        },
+        backgroundColor: Colors.lightBlueAccent,
+        selectedItemColor: Colors.black,
+        type: BottomNavigationBarType.fixed,
+        //type: BottomNavigationBarType.shifting,
+        items: const [
+       BottomNavigationBarItem(icon: Icon(Icons.contacts_sharp),label: "Contacts" ),
+      BottomNavigationBarItem(icon: Icon(Icons.search),label: "Search"),
+        BottomNavigationBarItem(icon: Icon(Icons.add_box_rounded),label: "View"),
+        BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
+      ],),
+      body: Screens[index],
     );
   }
 }
